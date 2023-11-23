@@ -307,6 +307,9 @@
                       </div>
                     </li>
                 -->
+                    <?php
+                        $user  = UserData::getByID($_SESSION['user_id']);
+                    ?>
                 
                     <li class="nav-item dropdown">
                       <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -317,7 +320,7 @@
                         <img src="./assets/images/avatars/avtar_5.png" alt="User-Profile" class="theme-color-yellow-img img-fluid avatar avatar-50 avatar-rounded">
                         <img src="./assets/images/avatars/avtar_3.png" alt="User-Profile" class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded">
                         <div class="caption ms-3 d-none d-md-block ">
-                            <h6 class="mb-0 caption-title">USUARIO</h6>
+                            <h6 class="mb-0 caption-title"><?php echo $user->nombre;?></h6>
                             <p class="mb-0 caption-sub-title"></p>
                         </div>
                       </a>

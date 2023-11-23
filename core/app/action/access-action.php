@@ -35,9 +35,9 @@ if(isset($_GET["opt"]) && $_GET["opt"] == "login"){
 			$_SESSION['user_id'] = $userid;
 
 			print "Cargando ... $username";
-			/*echo "<br><br>Hola, $username";
-			echo "<br><br>";
-			*/
+
+			
+			Core::addToastr("info","Bienvenido $username");
 			Core::redir("./?view=home");
 		}else{
 			//Core::redir("./");
