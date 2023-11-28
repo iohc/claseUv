@@ -14,7 +14,7 @@ class UserData extends Extra{
 		$this->username = "";
 		$this->password = "";
 		$this->status = "";
-		$this->lastname = "";
+		$this->apellido = "";
 		$this->kind = 1;
 
 	}
@@ -29,18 +29,35 @@ class UserData extends Extra{
 
 	public static function getUsersbyKind($k=1)
 	{
-		$sql = "select * from user where kind=".$k;
+		$sql = "select * from user where status=1 and kind=".$k;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData()); 
 	}
 
 	public function add(){
 		$sql = "insert into user (nombre,apellido,username,password,email,kind,status) value
-		 (\"$this->nombre\",\"$this->lastname\",\"$this->username\",\"$this->password\",
+		 (\"$this->nombre\",\"$this->apellido\",\"$this->username\",\"$this->password\",
 		 \"$this->email\",$this->kind,$this->status)";
 
 		return Executor::doit($sql);
 
+	}
+
+	public function	update(){
+		$sql  = "update user set nombre= \"$this->nombre\",apellido= \"$this->apellido\",email= \"$this->email\",username= \"$this->username\" where id=".$this->id;
+
+		return Executor::doit($sql);
+
+	}
+
+	public function	updatePass(){
+		$sql  = "update user set password= \"$this->password\" where id=".$this->id;
+		return Executor::doit($sql);
+	}
+
+	public function	updateOne($key,$val){
+		$sql  = "update user set $key= \"$val\" where id=".$this->id;
+		return Executor::doit($sql);
 	}
 }
 

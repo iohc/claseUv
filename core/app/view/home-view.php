@@ -19,16 +19,7 @@ if(!isset($_SESSION['user_id']))
 	</div>
 </div>
 
-<script>
-	$(document).ready(function () {
-		<?php
-			Core::getToastr();
-		?>
 
-		toastr.success('Hola a todos');
-
-	});
-</script>
 
 <?php
 
